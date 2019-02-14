@@ -1,0 +1,60 @@
+html {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .container {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      .left {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        background-color: darkblue;
+        color: white;
+      }
+      .right {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        background-color: darkred;
+        color: white;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.FakeDiv {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}

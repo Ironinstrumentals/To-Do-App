@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="CSS/Styles.css">
+    <script src="JS/Main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="ControlPanel">
+                <div id="DataLists">
+
+                </div>
+                <div class="FakeDiv">
+                    <label>
+                        <select id="SelectBar">
+                        </select>
+                    </label>
+                </div>
+                <div class="FakeDiv">
+                    <label>List Name: <input id="ListName" name="NewList" type="text"></label>
+                    <button onclick="CreateList();">+</button>
+                </div>
+                <div class="FakeDiv">
+                    <label>Task: <input name="NewTask" type="text" id="NewTask"></label>
+                    <button onclick="CreateTask();">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="SelectedList">
+                <form id="CurrentList">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
