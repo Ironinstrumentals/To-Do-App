@@ -3,7 +3,7 @@ function CreateList(){
 }
 
 function CreateTask(){
-    document.getElementById('CurrentList').innerHTML = document.getElementById('CurrentList').innerHTML + "<label><input readonly value='" + document.getElementById("NewTask").value + "' /></label>";
+    document.getElementById('CurrentList').innerHTML = document.getElementById('CurrentList').innerHTML + "<div class='FakeDiv'><label><input readonly value='" + document.getElementById("NewTask").value + "' /></label></div>";
 }
 
 //function DisplayList(){
