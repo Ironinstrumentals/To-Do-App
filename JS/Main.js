@@ -30,18 +30,24 @@ function CreateList(){
     console.log(lists);
 }
 */
+
+
+
+
+
 let addArrayToObject = (object, propertyName, ...strings) => {
     object[propertyName] = strings;
 };
 lists = {};
 function CreateList(){
     let listName = document.getElementById('ListName').value;
-    let tasks = document.getElementsByClassName('Task').values;
-    addArrayToObject(lists, listName, tasks)
+    let task = document.getElementsByClassName('Task').values;
+    addArrayToObject(lists, listName, task);
+    document.getElementById('SelectBar').innerHTML += '<option>' + listName + '</option>';
 }
 function CreateTaskBox(){
-    document.getElementById('CurrentList').innerHTML += '<div class="FakeDiv"><input type="text" class="Task"></div>'
+    document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv'><label><input  class='Task' value='" + document.getElementById("NewTask").value + "' /></label></div>";
 }
-function Log(){
+function logObject(){
     console.log(lists)
 }

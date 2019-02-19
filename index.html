@@ -17,7 +17,8 @@
                 </label>
             </div>
             <div class="FakeDiv">
-                <button onclick="Log()">Log</button>
+                <button onclick="logObject()">Log List Object</button>
+                <button onclick=""></button>
             </div>
             <div class="FakeDiv">
                 List Name:
@@ -28,12 +29,17 @@
             </div>
             <div class="FakeDiv">
                 New Task:
-                <button onclick="CreateTaskBox()">+</button>
+                <label>
+                    <input type="text" id="NewTask">
+                </label>
+                <button onclick="CreateTaskBox()" style="padding: 2px; padding-top: 0;">+</button>
             </div>
         </div>
         <div class="right">
             <div id="CurrentList">
+                <div class="FakeDiv">
 
+                </div>
             </div>
         </div>
     </div>
