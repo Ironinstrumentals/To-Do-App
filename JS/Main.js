@@ -1,3 +1,4 @@
+/*
 let lists = [];
 let tasks = [];
 
@@ -16,4 +17,31 @@ function CreateTask(){
         result+=`<div class="FakeDiv"><label><input class="" type="text" value="${tasks[i]}"></label></div>`
     }
     document.getElementById('CurrentList').innerHTML = result;
+}
+*/
+/*
+function CreateList(){
+    let propertyName = document.getElementById('ListName').value;
+    let addArrayToObject = (object, ...strings) => {
+        object[propertyName] = strings;
+    };
+    let lists = {};
+    addArrayToObject(lists, 'arrayOne', 'happy', 'flower', 'yummy', 'candy');
+    console.log(lists);
+}
+*/
+let addArrayToObject = (object, propertyName, ...strings) => {
+    object[propertyName] = strings;
+};
+lists = {};
+function CreateList(){
+    let listName = document.getElementById('ListName').value;
+    let tasks = document.getElementsByClassName('Task').values;
+    addArrayToObject(lists, listName, tasks)
+}
+function CreateTaskBox(){
+    document.getElementById('CurrentList').innerHTML += '<div class="FakeDiv"><input type="text" class="Task"></div>'
+}
+function Log(){
+    console.log(lists)
 }

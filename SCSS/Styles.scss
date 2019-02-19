@@ -35,6 +35,7 @@ html {
         align-content: center;
         align-items: center;
         background-color: darkblue;
+        flex-direction: column;
         color: white;
       }
       .right {
@@ -57,4 +58,8 @@ html {
 .FakeDiv {
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+.task {
+
 }
