@@ -41,8 +41,11 @@ let addArrayToObject = (object, propertyName, ...strings) => {
 lists = {};
 function CreateList(){
     let listName = document.getElementById('ListName').value;
-    let task = document.getElementsByClassName('Task').values;
-    addArrayToObject(lists, listName, task);
+    let task = document.getElementsByClassName('Task');
+    for (let i = 0; i < task.length; i++) {
+        let realTask = task[i].value;
+        addArrayToObject(lists, listName, realTask);
+    }
     document.getElementById('SelectBar').innerHTML += '<option>' + listName + '</option>';
 }
 function CreateTaskBox(){
