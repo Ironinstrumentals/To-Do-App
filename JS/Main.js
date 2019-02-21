@@ -1,17 +1,3 @@
-
-
-function save(){
-    localStorage.setItem('user', JSON.stringify(masterList));
-}
-
-function load(){
-    JSON.parse(localStorage.getItem('masterList'))
-}
-
-function logObject(){
-    console.log(masterList)
-}
-
 masterList = {
     unassigned: []
 
