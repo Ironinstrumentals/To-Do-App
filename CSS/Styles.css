@@ -53,3 +53,9 @@ html {
 .FakeDiv {
   margin-top: 6px;
   margin-bottom: 6px; }
+
+.completed {
+  color: green; }
+
+.white {
+  color: white; }

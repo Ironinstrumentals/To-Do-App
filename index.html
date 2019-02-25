@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/Styles.css">
     <script src="JS/Main.js" defer></script>
 </head>
-<body onload="">
+<body onload="loadCache()">
     <div class="container">
         <div class="left">
             <div class="FakeDiv">
@@ -18,9 +18,11 @@
                 </label>
             </div>
             <div class="FakeDiv">
+                <button onclick="clearCache()">Clear Cache</button>
+                <button onclick="saveCache()">Save Cache</button>
+                <button onclick="loadCache()">Load Cache</button>
                 <button onclick="loadList()">Load List</button>
                 <button onclick="clearList()">Clear List</button>
-                <button onclick="log()">LOG</button>
             </div>
             <div class="FakeDiv">
                 List Name:
@@ -40,6 +42,7 @@
         <div class="right">
             <div id="CurrentList">
                 <div class="FakeDiv">
+
                 </div>
             </div>
         </div>

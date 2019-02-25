@@ -1,13 +1,12 @@
 masterList = {
-    unassigned: []
+    CacheHolder: []
 
 };
-
-let x = 0;
 
 let addList = function (name) {
     masterList[name] = [];
     document.getElementById('SelectBar').innerHTML += '<option id="' + name + '">' + name + '</option>'
+    saveCache();
 };
 
 
@@ -15,15 +14,16 @@ addTaskToList = function () {
     let task = document.getElementById('NewTask').value;
     let name = document.getElementById('SelectBar').value || 'unassigned';
     masterList[name].push(task);
+    saveCache();
     loadList();
 };
 function loadList(){
     let name = document.getElementById('SelectBar').value;
     document.getElementById('CurrentList').innerHTML = "";
     for (let i = 0; i < masterList[name].length; i++) {
-        document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button onclick='' style='margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: white; color: green; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
+        document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: white; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
     }
-    console.log(masterList);
+    saveCache();
 }
 
 function deleteTask(clicked_id){
@@ -34,8 +34,7 @@ function deleteTask(clicked_id){
         masterList[name].unshift(task);
     }
     masterList[name].shift();
-    //alert(clicked_id); //- used this to ensure the value of clicked_id was the correct id.
-    //masterList[name].pull(task);
+    saveCache();
     loadList();
 }
 
@@ -46,4 +45,28 @@ function clearList(){
         masterList[name].splice(task);
     }
     loadList();
+}
+
+function completeTask(selectedButton){
+    document.getElementById(selectedButton).classList.toggle('white');
+    document.getElementById(selectedButton).classList.toggle('completed');
+}
+
+
+
+function saveCache(){
+    let masterList_serialized = JSON.stringify(masterList);
+    localStorage.setItem('Cache', masterList_serialized);
+    loadCache();
+}
+
+function loadCache(){
+    let masterList_deserialized = JSON.parse(localStorage.getItem("Cache"));
+    masterList = masterList_deserialized;
+    //WRITE LISTS ONTO HTML
+}
+
+function clearCache(){
+    localStorage.clear();
+
 }
