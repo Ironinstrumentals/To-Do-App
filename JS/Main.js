@@ -61,9 +61,10 @@ function saveCache(){
 }
 
 function loadCache(){
-    let masterList_deserialized = JSON.parse(localStorage.getItem("Cache"));
-    masterList = masterList_deserialized;
+    masterList = JSON.parse(localStorage.getItem("Cache"));
     //WRITE LISTS ONTO HTML
+    masterList.forEach()
+    document.getElementById('SelectBar').innerHTML += '<option id="' + name + '">' + name + '</option>'
 }
 
 function clearCache(){
