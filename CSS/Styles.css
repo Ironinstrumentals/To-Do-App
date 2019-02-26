@@ -8,7 +8,7 @@ html {
   align-content: center;
   align-items: center; }
   html body {
-    background-color: dodgerblue;
+    background-color: darkblue;
     display: flex;
     height: 100%;
     width: 100%;
@@ -28,9 +28,11 @@ html {
       align-content: center;
       align-items: center; }
       html body .container .left {
+        overflow: hidden;
+        position: sticky;
         display: flex;
         height: 100%;
-        width: 100%;
+        width: 10%;
         margin: 0;
         padding: 0;
         justify-content: center;
@@ -39,54 +41,108 @@ html {
         background-color: darkblue;
         flex-direction: column;
         color: white; }
+      html body .container .middleBack {
+        margin: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        align-content: center;
+        align-items: center;
+        background-color: darkblue;
+        color: white;
+        flex-direction: column; }
+      html body .container .middle {
+        display: flex;
+        align-self: center;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        align-content: center;
+        align-items: center;
+        background-color: white;
+        color: white;
+        flex-direction: column; }
       html body .container .right {
+        overflow: hidden;
+        position: sticky;
         display: flex;
         height: 100%;
-        width: 100%;
+        width: 10%;
         margin: 0;
         padding: 0;
         justify-content: center;
         align-content: center;
         align-items: center;
-        background-color: green;
+        background-color: darkblue;
         color: white;
         flex-direction: column; }
 
 .FakeDiv {
+  padding: 0;
   margin-top: 6px;
-  margin-bottom: 6px; }
+  margin-bottom: 6px;
+  border: solid white 1px; }
 
 .completed {
-  color: green; }
-
-.white {
   color: white; }
 
-/* Style the navbar */
-#navbar {
-  align-self: flex-start;
-  overflow: hidden;
-  background-color: dodgerblue; }
+.white {
+  color: dodgerblue; }
 
-/* Navbar links */
-#navbar a {
-  float: left;
+nav {
+  align-self: center;
+  display: flex;
+  width: 99%;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: dodgerblue;
+  border-radius: 0 0 10px 10px; }
+
+nav a {
   display: block;
   color: white;
   text-align: center;
   padding: 14px;
   text-decoration: none; }
 
-/* Page content */
 .content {
   padding: 16px; }
 
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
   top: 0;
   width: 100%; }
 
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
   padding-top: 60px; }
+
+@media only screen and (min-width: 920px) {
+  .task {
+    width: 700px;
+    border: solid dodgerblue 2px;
+    background-color: darkblue;
+    color: white; }
+  .topInput {
+    width: 300px; }
+  .home {
+    font-size: 20px; }
+  #SelectBar {
+    width: 100px; } }
+
+@media only screen and (max-width: 920px) {
+  .task {
+    width: 280px;
+    border: solid dodgerblue 2px;
+    background-color: darkblue;
+    color: white; }
+  .topInput {
+    width: 40px; }
+  .home {
+    font-size: 20px;
+    width: 5px; }
+  #SelectBar {
+    width: 40px; } }

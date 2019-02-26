@@ -5,7 +5,11 @@ masterList = {
 
 let addList = function (name) {
     masterList[name] = [];
-    document.getElementById('SelectBar').innerHTML += '<option id="' + name + '">' + name + '</option>'
+    //document.getElementById('SelectBar').innerHTML += '<option onclick="loadList()" id="' + name + '">' + name + '</option>';
+    saveCache();
+    loadCache();
+    document.getElementById('SelectBar').value = name;
+    loadList();
 };
 
 
@@ -14,13 +18,15 @@ addTaskToList = function () {
     let name = document.getElementById('SelectBar').value || 'unassigned';
     masterList[name].push(task);
     loadList();
+    saveCache();
 };
 function loadList(){
     let name = document.getElementById('SelectBar').value;
     document.getElementById('CurrentList').innerHTML = "";
     for (let i = 0; i < masterList[name].length; i++) {
-        document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: white; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
+        document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv' style='display: flex; width: 100%;'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3.5px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input class='task' id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='border: solid dodgerblue 1px; margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: dodgerblue; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
     }
+    saveCache();
 }
 
 function deleteTask(clicked_id){
@@ -31,7 +37,16 @@ function deleteTask(clicked_id){
         masterList[name].unshift(task);
     }
     masterList[name].shift();
+    saveCache();
     loadList();
+}
+
+function deleteList(){
+    clearList();
+    let name = document.getElementById('SelectBar').value;
+    delete masterList[name];
+    saveCache();
+    loadCache();
 }
 
 function clearList(){
@@ -57,24 +72,20 @@ function saveCache(){
     console.log(masterList_serialized);
 }
 
-function loadCache(){
-    let masterList_deserialized = JSON.parse(localStorage.getItem("Cache"));
-    masterList = masterList_deserialized;
-    console.log(localStorage.getItem('Cache'));
-    console.log(masterList);
-    let NameList = Object.keys(masterList);
-    for (let index = 0; index < NameList.length; index++){
-        //console.log(masterList[NameList[index]]);
-        addList(NameList[index]);
-        //document.getElementById('SelectBar').innerHTML += '<option id="' + NameList[index] + '">' + NameList[index] + '</option>'
-    }
-    loadList();
-}
-
-function clearCache(){
+function clearCache(){ // Used for Error Debugging.
     localStorage.clear();
-    
 }
 
-// let i = Li
-// Write: i
+
+
+function loadCache() {
+    if (localStorage.getItem('Cache')) {
+        document.getElementById('SelectBar').innerHTML = "";
+        masterList = JSON.parse(localStorage.getItem("Cache"));
+        for (List in masterList) {
+            document.getElementById('SelectBar').innerHTML += '<option onclick="loadList(this.id)" id="' + List + '">' + List + '</option>';
+        }
+    }
+}
+
+/////////

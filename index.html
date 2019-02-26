@@ -5,50 +5,37 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="CSS/Styles.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="JS/Main.js" defer></script>
 </head>
-<body onload="//loadCache()">
-<div id="navbar">
-    <a href="index.html">Home</a>
-</div>
+<body onload="loadCache(); loadList();">
+<nav>
+    <a href="index.html" ><i class="fas fa-home home"></i></a>
+    <a><button onclick="deleteList(); loadList();" style='margin-right: 3px; padding-top: 1.5px; padding-left: 3.5px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'>
+        <i class='fas fa-times'></i>
+    </button><label><select onchange="loadList(loadList(document.getElementById('SelectBar').value))" id="SelectBar"></select></label> <button onclick='clearList()' style="padding: 2px; padding-top: 1px;"><i class="fas fa-eraser"></i></button></a>
+    <a>List: <label><input class='topInput' type="text" id="ListName"></label> <button onclick="addList(document.getElementById('ListName').value, document.getElementById(''))" style="padding: 2px; padding-top: 0;">+</button></a>
+    <a>Task:
+        <label>
+            <input class='topInput' type="text" id="NewTask">
+        </label>
+        <button onclick="addTaskToList()" style="padding: 2px; padding-top: 0;">+</button></a>
+
+    <!--<a href="#" onclick="saveCache()">Save</a>-->
+</nav>
     <div class="container">
-
         <div class="left">
-            <div class="FakeDiv">
-                <label>
-                    <select id="SelectBar" style="width: 230px;">
-
-                    </select>
-                </label>
-            </div>
-            <div class="FakeDiv">
-                <button onclick="clearCache()">Clear Cache</button>
-                <button onclick="loadList()">Load List</button>
-                <button onclick="clearList()">Clear List</button>
-                <button onclick="saveCache()">Save Cache</button>
-                <button onclick="loadCache()">Load Cache</button>
-            </div>
-            <div class="FakeDiv">
-                List Name:
-                <label>
-                    <input type="text" id="ListName">
-                </label>
-                <button onclick="addList(document.getElementById('ListName').value, document.getElementById(''))" style="padding: 2px; padding-top: 0;">+</button>
-            </div>
-            <div class="FakeDiv">
-                New Task:
-                <label>
-                    <input type="text" id="NewTask">
-                </label>
-                <button onclick="addTaskToList()" style="padding: 2px; padding-top: 0;">+</button>
-            </div>
         </div>
-        <div class="right">
+        <div class="middle">
             <div id="CurrentList">
                 <div class="FakeDiv">
 
                 </div>
             </div>
+        </div>
+        <div class="right">
+
         </div>
     </div>
 </body>
