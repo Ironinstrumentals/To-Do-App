@@ -88,25 +88,17 @@ html {
     }
   }
 }
-
 .FakeDiv {
   padding: 0;
   margin-top: 6px;
   margin-bottom: 6px;
 }
-
-.task {
-
-}
-
 .completed {
   color: white;
 }
-
 .white {
   color: dodgerblue;
 }
-
 nav {
   top: 0;
   z-index: 1;
@@ -117,10 +109,8 @@ nav {
   flex-direction: row;
   overflow: hidden;
   background-color: dodgerblue;
-  //border: solid white 1px;
   border-radius: 0 0 10px 10px;
 }
-
 nav a {
   display: block;
   color: white;
@@ -128,21 +118,14 @@ nav a {
   padding: 14px;
   text-decoration: none;
 }
-
 .sticky {
   position: fixed;
   top: 0;
   width: 100%;
 }
-
 .sticky + .content {
   padding-top: 60px;
 }
-
-.effect {
-
-}
-
 @media only screen and (min-width: 920px) {
   .task {
     width: 700px;
@@ -160,7 +143,6 @@ nav a {
     width: 100px;
   }
 }
-
 @media only screen and (max-width: 920px) {
   .task {
     width: 280px;
@@ -177,5 +159,51 @@ nav a {
   }
   #SelectBar {
     width: 40px;
+  }
+}
+.fadeIn{
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+
+  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.5s;
+
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+
+  visibility: visible !important;
+}
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0.0;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+  }
+  60% {
+    -webkit-transform: scale(1.1);
+  }
+  80% {
+    -webkit-transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
   }
 }

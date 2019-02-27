@@ -5,6 +5,7 @@ let addList = function (name) {
     loadCache();
     document.getElementById('SelectBar').value = name;
     loadList();
+    document.getElementById('ListName').value = '';
 };
 addTaskToList = function () {
     let task = document.getElementById('NewTask').value;
@@ -12,13 +13,14 @@ addTaskToList = function () {
     masterList[name].push(task);
     loadList();
     saveCache();
+    document.getElementById('NewTask').value = '';
 };
 function loadList(){
     let name = document.getElementById('SelectBar').value;
     document.getElementById('CurrentList').innerHTML = "";
     for (let i = 0; i < masterList[name].length; i++) {
         if (masterList[name].length > 0) {
-            document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv' style='display: flex; width: 100%;'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3.5px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input class='task' id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='border: solid dodgerblue 1px; margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: dodgerblue; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
+            document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv fadeIn' style='display: flex; width: 100%;'><button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3.5px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'><i class='fas fa-times'></i></button><label><input class='task' id='[Input]" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label><button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='border: solid dodgerblue 1px; margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: dodgerblue; border-radius: 5px;'><i class='fas fa-check'></i></button></div>"
         }
     }
     saveCache();
@@ -56,9 +58,6 @@ function completeTask(selectedButton){
 function saveCache(){
     let masterList_serialized = JSON.stringify(masterList);
     localStorage.setItem('Cache', masterList_serialized);
-}
-function clearCache(){ // Used for Error Debugging.
-    localStorage.clear();
 }
 function loadCache() {
     if (localStorage.getItem('Cache')) {
