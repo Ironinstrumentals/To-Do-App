@@ -20,7 +20,7 @@ addTaskToList = function () {
 function loadList(){
     let name = document.getElementById('SelectBar').value;
     document.getElementById('CurrentList').innerHTML = "";
-    if (typeof masterList[name] !== 'undefined'){
+    if (typeof masterList[name].length !== 'undefined'){
         for (let i = 0; i < masterList[name].length; i++) {
             if (masterList[name].length > 0) {
                 document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv fadeIn' style='display: flex; width: 100%;'>" +
