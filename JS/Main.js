@@ -66,10 +66,10 @@ function completeTask(selectedButton){
 
 
 function saveCache(){
-    console.log(masterList);
+    //console.log(masterList);
     let masterList_serialized = JSON.stringify(masterList);
     localStorage.setItem('Cache', masterList_serialized);
-    console.log(masterList_serialized);
+    //console.log(masterList_serialized);
 }
 
 function clearCache(){ // Used for Error Debugging.
