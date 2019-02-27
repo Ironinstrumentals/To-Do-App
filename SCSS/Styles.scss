@@ -1,6 +1,6 @@
 html {
   display: flex;
-  height: 100%;
+  height: calc(100% - 48px);
   width: 100%;
   margin: 0;
   padding: 0;
@@ -131,8 +131,8 @@ nav a {
   .task {
     width: 700px;
     border: solid dodgerblue 2px;
-    background-color: darkblue;
-    color: white;
+    background-color: white;
+    color: darkblue;
   }
   .topInput {
     width: 300px;
@@ -166,8 +166,8 @@ nav a {
   animation-name: fadeIn;
   -webkit-animation-name: fadeIn;
 
-  animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
 
   animation-timing-function: ease-in-out;
   -webkit-animation-timing-function: ease-in-out;
