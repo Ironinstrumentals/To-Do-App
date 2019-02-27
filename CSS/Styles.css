@@ -56,12 +56,10 @@ html {
       html body .container .middle {
         display: flex;
         align-self: center;
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 0;
+        margin: 30px 0 0 0;
         width: 100%;
         height: fit-content;
-        padding: 0;
+        padding: 0 0 25px 0;
         align-content: center;
         align-items: center;
         background-color: white;
@@ -103,7 +101,10 @@ nav {
   flex-direction: row;
   overflow: hidden;
   background-color: dodgerblue;
-  border-radius: 0 0 10px 10px; }
+  border-radius: 0 0 10px 10px;
+  -webkit-box-shadow: 0px 1px 11px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 11px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 11px 5px rgba(0, 0, 0, 0.75); }
 
 nav a {
   display: block;
