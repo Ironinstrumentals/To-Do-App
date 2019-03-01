@@ -58,7 +58,6 @@ function clearList(){
     }
     loadList();
 }
-
 function completeTask(selectedButton){
     document.getElementById(selectedButton).classList.toggle('white');
     document.getElementById(selectedButton).classList.toggle('completed');
@@ -72,7 +71,7 @@ function completeTask(selectedButton){
         masterList[name].shift();
         saveCache();
         loadList();
-    }, 500);
+    }, 250);
 }
 function saveCache(){
     let masterList_serialized = JSON.stringify(masterList);
