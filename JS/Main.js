@@ -1,6 +1,4 @@
-masterList = {
-
-};
+masterList = {};
 let addList = function (name) {
     masterList[name] = [];
     saveCache();
@@ -66,7 +64,6 @@ function completeTask(selectedButton){
     document.getElementById(selectedButton).classList.toggle('completed');
     setTimeout(function deleteComplete(){
         let task = selectedButton.slice(1);
-        //task = task.slice(1);
         let name = document.getElementById('SelectBar').value;
         if (masterList[name].indexOf(task) > 0) {
             masterList[name].splice(masterList[name].indexOf(task), 1);
@@ -97,4 +94,3 @@ function updateList(thistle) {
     }
     deleteTask(thistle.slice(1));
 }
-
