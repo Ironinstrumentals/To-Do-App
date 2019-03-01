@@ -27,7 +27,7 @@ function loadList(){
                     "<button onclick='deleteTask(this.id)' id='"+ masterList[name][i].toString() +"' style='margin-right: 3px; padding-top: 1.5px; padding-left: 3.5px; padding-right: 3.5px; background-color: red; color: white; border-radius: 5px;'>" +
                     "<i class='fas fa-times'></i></button>" +
                     "<label><input onchange='updateList(this.id);' class='task' id='x" + masterList[name][i] + "' value='" + masterList[name][i] + "' /></label>" +
-                    "<button class='white' id='z" + masterList[name][i] + "' onclick='completeTask(this.id)' style='border: solid dodgerblue 1px; margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: dodgerblue; border-radius: 5px;'>" +
+                    "<button class='white' id='z" + masterList[name][i].toString() + "' onclick='completeTask(this.id)' style='border: solid dodgerblue 1px; margin-left: 3px; padding-top: 1.5px; padding-left: 3px; padding-right: 3.5px; background-color: dodgerblue; border-radius: 5px;'>" +
                     "<i class='fas fa-check'></i></button></div>"
             }
         }
@@ -60,9 +60,22 @@ function clearList(){
     }
     loadList();
 }
+
 function completeTask(selectedButton){
     document.getElementById(selectedButton).classList.toggle('white');
     document.getElementById(selectedButton).classList.toggle('completed');
+    setTimeout(function deleteComplete(){
+        let task = selectedButton.slice(1);
+        //task = task.slice(1);
+        let name = document.getElementById('SelectBar').value;
+        if (masterList[name].indexOf(task) > 0) {
+            masterList[name].splice(masterList[name].indexOf(task), 1);
+            masterList[name].unshift(task);
+        }
+        masterList[name].shift();
+        saveCache();
+        loadList();
+    }, 500);
 }
 function saveCache(){
     let masterList_serialized = JSON.stringify(masterList);
