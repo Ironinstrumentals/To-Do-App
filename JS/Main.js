@@ -1,24 +1,24 @@
 masterList = {};
 let addList = function (name) {
     masterList[name] = [];
+    document.getElementById('SelectBar').value = name;
+    document.getElementById('ListName').value = '';
     saveCache();
     loadCache();
-    document.getElementById('SelectBar').value = name;
-    loadList();
-    document.getElementById('ListName').value = '';
 };
 addTaskToList = function () {
     let task = document.getElementById('NewTask').value;
     let name = document.getElementById('SelectBar').value || 'unassigned';
-    masterList[name].push(task);
-    loadList();
-    saveCache();
+    if (typeof masterList[name] !== 'undefined' || null){
+        masterList[name].push(task);
+        saveCache();
+    }
     document.getElementById('NewTask').value = '';
 };
 function loadList(){
     let name = document.getElementById('SelectBar').value;
     document.getElementById('CurrentList').innerHTML = "";
-    if (typeof masterList[name].length !== 'undefined'){
+    if (typeof masterList[name] !== 'undefined' || null){
         for (let i = 0; i < masterList[name].length; i++) {
             if (masterList[name].length > 0) {
                 document.getElementById('CurrentList').innerHTML += "<div class='FakeDiv fadeIn' style='display: flex; width: 100%;'>" +
@@ -29,7 +29,6 @@ function loadList(){
                     "<i class='fas fa-check'></i></button></div>"
             }
         }
-        saveCache();
     }
 }
 function deleteTask(clicked_id){
@@ -41,7 +40,6 @@ function deleteTask(clicked_id){
     }
     masterList[name].shift();
     saveCache();
-    loadList();
 }
 function deleteList(){
     clearList();
@@ -70,12 +68,12 @@ function completeTask(selectedButton){
         }
         masterList[name].shift();
         saveCache();
-        loadList();
     }, 250);
 }
 function saveCache(){
     let masterList_serialized = JSON.stringify(masterList);
     localStorage.setItem('Cache', masterList_serialized);
+    loadList();
 }
 function loadCache() {
     if (localStorage.getItem('Cache')) {
