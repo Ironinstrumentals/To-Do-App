@@ -181,15 +181,6 @@ nav a {
     -webkit-transform: scale(1);
     opacity: 1; } }
 
-.fadeIn2 {
-  animation-name: fadeIn;
-  -webkit-animation-name: fadeIn;
-  animation-duration: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-timing-function: ease-in-out;
-  visibility: visible !important; }
-
 .slideDown {
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
