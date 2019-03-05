@@ -54,7 +54,7 @@ function clearList(){
         let task = masterList[name][i];
         masterList[name].splice(task);
     }
-    loadList();
+    saveCache();
 }
 function completeTask(selectedButton){
     document.getElementById(selectedButton).classList.toggle('white');
